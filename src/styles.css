@@ -2,3 +2,25 @@
   font-family: sans-serif;
   text-align: center;
 }
+li {
+  list-style: none;
+}
+
+.App button {
+  margin-left: 10px;
+  padding: 5px;
+  background-color: magenta;
+
+  border: none;
+  border-radius: 6px;
+}
+
+.caixaItem {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.caixaItem button {
+  background-color: orangered;
+  margin-bottom: 5px;
+}
