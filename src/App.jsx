@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 
 export default function App() {
-  const [tarefas, setTarefas] = useState([
-    "Estudar Python",
-    "Estudar Java",
-    "Estudar PHP"
-  ]);
+  const [tarefas, setTarefas] = useState([]);
 
   const [input, setInput] = useState("");
+
+  useEffect(() => {
+    const tarefaLocalStorage = localStorage.getItem("tarefas");
+
+    if (tarefaLocalStorage) {
+      setTarefas(JSON.parse(tarefaLocalStorage));
+    }
+    return () => {}
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+  }, [tarefas]);
 
   function handleAdd() {
     setTarefas([...tarefas, input]);
