@@ -12,7 +12,7 @@ export default function App() {
     if (tarefaLocalStorage) {
       setTarefas(JSON.parse(tarefaLocalStorage));
     }
-    return () => {}
+    return () => {};
   }, []);
 
   useEffect(() => {
@@ -23,12 +23,20 @@ export default function App() {
     setTarefas([...tarefas, input]);
     setInput("");
   }
+  const clear = (item) => {
+    const itemFiltered = tarefas.filter((elemento) => elemento !== item);
+
+    setTarefas(itemFiltered);
+  };
 
   return (
     <div className="App">
       <ul>
-        {tarefas.map((tarefa, id) => (
-          <li key={id}> {tarefa} </li>
+        {tarefas.map((item, id) => (
+          <div className="caixaItem">
+            <li key={id}> {item} </li>
+            <button onClick={() => clear(item)}>x</button>
+          </div>
         ))}
       </ul>
 
